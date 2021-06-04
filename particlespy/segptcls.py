@@ -7,18 +7,18 @@ Created on Tue Jul 31 15:06:08 2018
 import matplotlib.pyplot as plt
 import numpy as np
 import scipy.ndimage as ndi
-
-from skimage.filters import threshold_otsu, threshold_mean, threshold_minimum
-from skimage.filters import threshold_yen, threshold_isodata, threshold_li
-from skimage.filters import threshold_local, rank
-from skimage.filters import threshold_niblack, threshold_sauvola
-
-from skimage.measure import label
 from skimage.exposure import rescale_intensity
-from skimage.morphology import remove_small_objects, square, white_tophat, disk, binary_erosion
-from skimage.segmentation import clear_border, watershed
 from skimage.feature import peak_local_max
+from skimage.filters import (rank, threshold_isodata, threshold_li,
+                             threshold_local, threshold_mean,
+                             threshold_minimum, threshold_niblack,
+                             threshold_otsu, threshold_sauvola, threshold_yen)
+from skimage.measure import label
+from skimage.morphology import (binary_erosion, disk, remove_small_objects,
+                                square, white_tophat)
+from skimage.segmentation import clear_border, watershed
 from skimage.util import invert
+
 
 def process(im, param):
     """

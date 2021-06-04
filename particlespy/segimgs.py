@@ -94,7 +94,7 @@ def create_features(image, parameters=None):
             blur = filters.gaussian(image,par[1][1])
             new_layer = np.reshape(laplacian(blur),shape)
         else:
-            new_layer = np.reshape(filters.laplacian(image),shape)
+            new_layer = np.reshape(laplacian(image),shape)
         image_stack = np.concatenate((image_stack, new_layer), axis=2)
 
     if True in parameters.membrane[1:]:

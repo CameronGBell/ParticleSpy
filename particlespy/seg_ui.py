@@ -41,7 +41,6 @@ class Application(QMainWindow):
         self.getparams()
         
         self.prev_params = parameters()
-        self.prev_params.generate()
         
         offset = 50
         self.canvas_size = height
@@ -384,7 +383,6 @@ class Application(QMainWindow):
         
     def getparams(self):
         self.params = parameters()
-        self.params.generate()
         
     def changeIm(self):
         if str(self.imBox.currentText()) == "Image":

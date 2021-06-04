@@ -5,21 +5,24 @@ Created on Tue Jul 31 13:35:23 2018
 @author: qzo13262
 """
 
-from particlespy.segptcls import process
-import numpy as np
-from particlespy.ptcl_class import particle, particle_list
-from particlespy.custom_kernels import membrane_projection
-from skimage import filters, morphology
-from skimage.measure import label, regionprops, perimeter
-from sklearn import preprocessing
-from sklearn.cluster import DBSCAN, KMeans
-import particlespy.find_zoneaxis as zone
-import warnings
-import h5py
 import inspect
+import os
+import warnings
+
+import h5py
+import numpy as np
 import pandas as pd
 import trackpy
-import os
+from skimage import filters, morphology
+from skimage.measure import label, perimeter, regionprops
+from sklearn import preprocessing
+from sklearn.cluster import DBSCAN, KMeans
+
+import particlespy.find_zoneaxis as zone
+from particlespy.custom_kernels import membrane_projection
+from particlespy.ptcl_class import particle, particle_list
+from particlespy.segptcls import process
+
 
 def particle_analysis(acquisition,parameters,particles=None,mask=np.zeros((1))):
     """
@@ -297,7 +300,7 @@ def get_composition(particle,params):
 class parameters(object):
     """A parameters object."""
     
-    def generate(self,threshold='otsu',watershed=False,watershed_size=0,
+    def __init__(self,threshold='otsu',watershed=False,watershed_size=0,
                  watershed_erosion=0,invert=False,min_size=0,store_im=False,
                  pad=5,rb_kernel=0,gaussian=0,local_size=1):
         self.segment = {}
@@ -317,6 +320,20 @@ class parameters(object):
         self.store['p_only'] = False
         
         self.generate_eds()
+        
+    def __str__(self):
+        
+        return f"threshold={self.segment['threshold']},
+                watershed={self.segment['watershed']},
+                watershed_size={self.segment['watershed_size']},
+                watershed_erosion={self.segment['watershed_erosion']},
+                invert={self.segment['invert']},
+                min_size={self.segment['min_size']},
+                store_im={self.store['store_im']},
+                pad={self.store['pad']},
+                rb_kernel={self.segment['rb_kernel']},
+                gaussian={self.segment['gaussian']},
+                local_size={self.segment['local_size']}"
         
     def generate_eds(self,eds_method=False,elements=False, factors=False,
                      store_maps=False):
