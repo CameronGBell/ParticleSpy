@@ -323,17 +323,7 @@ class parameters(object):
         
     def __str__(self):
         
-        return f"threshold={self.segment['threshold']},
-                watershed={self.segment['watershed']},
-                watershed_size={self.segment['watershed_size']},
-                watershed_erosion={self.segment['watershed_erosion']},
-                invert={self.segment['invert']},
-                min_size={self.segment['min_size']},
-                store_im={self.store['store_im']},
-                pad={self.store['pad']},
-                rb_kernel={self.segment['rb_kernel']},
-                gaussian={self.segment['gaussian']},
-                local_size={self.segment['local_size']}"
+        return f"threshold='{self.segment['threshold']}',watershed={self.segment['watershed']},watershed_size={self.segment['watershed_size']},watershed_erosion={self.segment['watershed_erosion']},invert={self.segment['invert']},min_size={self.segment['min_size']},store_im={self.store['store_im']},pad={self.store['pad']},rb_kernel={self.segment['rb_kernel']},gaussian={self.segment['gaussian']},local_size={self.segment['local_size']}"
         
     def generate_eds(self,eds_method=False,elements=False, factors=False,
                      store_maps=False):

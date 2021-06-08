@@ -472,7 +472,7 @@ class Application(QMainWindow):
         self.label.setPixmap(pixmap2)
         
     def return_params(self,params):
-        print(self.params.segment)
+        print(self.params)
         
     def threshold_choice(self):
         if str(self.comboBox.currentText()) == "Otsu":
